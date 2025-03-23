@@ -82,5 +82,8 @@ Pagina de registro de libro
 
 ![image](https://github.com/user-attachments/assets/7a058be0-c99b-4229-9454-efd62b98a508)
 
+**Diagrama entidad relación de la base de datos**
+
+![image](https://github.com/user-attachments/assets/e8560e51-5333-4367-9e58-001791f3cd9b)
 
 

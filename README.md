@@ -84,6 +84,8 @@ Pagina de registro de libro
 
 **Diagrama entidad relación de la base de datos**
 
+Se presenta el diagrama de la base de datos, donde se encuentran las dos tablas creadas junto con sus llaves primarias y la llave foránea que las relaciona a las dos. En este caso se tiene la tabla Libros (ID (llave primaria), Titulo, AutorID (llave foránea)) y Autores( AutoreID (llave primaria), Nombre).
+
 ![image](https://github.com/user-attachments/assets/e8560e51-5333-4367-9e58-001791f3cd9b)
 
 

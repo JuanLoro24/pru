@@ -31,3 +31,40 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 -	Para la conexión con la base de datos, en la consola de administrador de paquetes se debe usar la siguiente sentencia para la conexión con la base de datos (nota: en la consola se debe verificar que en “proyecto predeterminado” se tenga la biblioteca de clases, puesto que la conexión se debe hacer en ese proyecto).
 
 Scaffold-DbContext "Server= **Nombre del servidor SQL server**; Database= **Nombre base de datos con la que se debe realizar la conexión**; Trusted_Connection=True; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir **Data (directorio donde se alojaran las clases de la conexión)**
+
+-	Una vez ejecutada la sentencia, entityframework genera las clases para la conexión dentro de la biblioteca de clases y trabajar sobre la base de datos, esto quiere decir que dentro de Data se crea un DbContex (que representa la conexión) y una clase por cada tabla que se tenga en la base de datos.
+-	Es recomendable otro directorio en la biblioteca de clases llamado “Models” y pasar las clases que se crearon en Data, esto con el fin de tener una mejor organización, puesto que Data tendrá el elemento de conexión y Models las clases de cada tabla.
+-	Se debe completar la conexión con la base de datos, para ellos se deben hacer unos cambios en el program.cs y en el appsettings.jason.
+-	El encargado de la configuración de la aplicación web es appsettings.jason, por lo que es necesario agregar la cadena de conexión, como se presenta a continuación:
+
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "Server= **Nombre del servidor SQL server**; Database= **Nombre base de datos con la que se debe realizar la conexión**;Trusted_Connection=True;TrustServerCertificate=True;"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    }
+}
+
+-	El elemento program.cs es el archivo que se ejecuta primero en la aplicación para su funcionamiento. Por lo tanto, es necesario agregar la cadena de conexión, puesto que si no es así entityframework no se podrá conectar a la base de datos, para ello se deben agregar las siguientes librerías:
+
+using negocio.Data; (relación con la biblioteca de clases y DbContext)
+using Microsoft.EntityFrameworkCore;
+
+-	Junto con la siguiente sentencia luego de crear la variable builder.
+  
+// Configurar Entity Framework Core con la conexión de appsettings.json
+builder.Services.AddDbContext< nombre del DbContext en Data>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+**Arquitectura MVC (model – view – controller)**
+ 
+Para este caso se implementa el patrón de arquitectura MVC para tener un código mas organizado separado en 3 componentes para su funcionalidad. Donde el modelo contendrá las clases de la base de datos y tendrá interacción con el negocio de la biblioteca de clases, la vista se encarga de albergar todos los archivos html para la interfaz gráfica y finalmente el controlador atiende las solicitudes del cliente pidiendo y enviando datos al modelo teniendo relación la vista. Para este caso se implementó lo siguiente:
+
+-	Dado que el proyecto cuenta con dos tablas, se crearon dos modelos, uno para autores y otro para libros.
+-	EL proyecto solicito tres representaciones graficas diferentes. Por lo tanto, la vista cuenta con un archivo html por cada una, junto con el layout que es el archivo html base. Teniendo en cuenta que el que para el diseño de la interfaz es necesario el uso del css y el js estos se encuentran en la carpeta wwwroot para los archivos estáticos.
+-	Con respecto a los controladores se implementaros 3, uno por cada interfaz grafica con el fin de tener una mejor organización con respecto a las peticiones del cliente en cada una de las vistas. En este caso puntual, la aplicación funciona con peticiones http que envia y recibe información en formato JSON, dado que solo se solicitó mostrar y agregar datos se usan las peticiones GET y POST.
+

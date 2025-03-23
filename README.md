@@ -68,3 +68,19 @@ Para este caso se implementa el patrón de arquitectura MVC para tener un códig
 -	EL proyecto solicito tres representaciones graficas diferentes. Por lo tanto, la vista cuenta con un archivo html por cada una, junto con el layout que es el archivo html base. Teniendo en cuenta que el que para el diseño de la interfaz es necesario el uso del css y el js estos se encuentran en la carpeta wwwroot para los archivos estáticos.
 -	Con respecto a los controladores se implementaros 3, uno por cada interfaz grafica con el fin de tener una mejor organización con respecto a las peticiones del cliente en cada una de las vistas. En este caso puntual, la aplicación funciona con peticiones http que envia y recibe información en formato JSON, dado que solo se solicitó mostrar y agregar datos se usan las peticiones GET y POST.
 
+**Interfaces graficas del gestor de biblioteca**
+
+Pagina principal
+
+![image](https://github.com/user-attachments/assets/8e6ec581-3bb2-4859-a698-3972b86d3e05)
+
+Pagina de registro de autor
+
+![image](https://github.com/user-attachments/assets/75955b6a-48b3-4c76-a42c-07c5a21f515d)
+
+Pagina de registro de libro
+
+![image](https://github.com/user-attachments/assets/7a058be0-c99b-4229-9454-efd62b98a508)
+
+
+

@@ -82,6 +82,25 @@ Pagina de registro de libro
 
 ![image](https://github.com/user-attachments/assets/7a058be0-c99b-4229-9454-efd62b98a508)
 
+**Uso del código presentado en el repositorio**
+
+Para el uso del proyecto presentado en el repositorio, es necesario primero crear la base de datos con el uso del script de SQL. Luego hacer uso de los dos proyectos que conforman a la aplicación, que en este caso son la biblioteca de clases y el proyecto web, los dos siempre deben estar en el mismo directorio puesto que son dependientes. Por lo tanto, del repositorio se debe usar lo siguiente:
+
+![image](https://github.com/user-attachments/assets/2788277d-1ad7-47a0-b235-a541550416ab)
+
+Para hacer uso del proyecto, es necesario verificar la cadena de conexión que se tenga en la biblioteca de clases y el proyecto web. Puesto es importante tener en cuenta el nombre del servidor (SQL Server) donde fue creada la base de datos, esto quiere decir que se debe validar la ruta de conexión del DBContext (biblioteca de clases directorio Data) y appsettings.json (Proyecto web).
+
+![image](https://github.com/user-attachments/assets/181bd707-e748-44d1-91ce-7f4d7558c82a)
+
+**Verificación nombre del servidor en cadena de conexión (biblioteca de clases)**
+
+![image](https://github.com/user-attachments/assets/ed51e449-3725-4fd7-b9cd-3a565fbb2a37)
+
+**Verificación nombre del servidor en cadena de conexión (proyecto web)**
+
+![image](https://github.com/user-attachments/assets/9a1548e1-073f-43c3-92c6-089fb11f37ec)
+
+
 **Diagrama entidad relación de la base de datos**
 
 Se presenta el diagrama de la base de datos, donde se encuentran las dos tablas creadas junto con sus llaves primarias y la llave foránea que las relaciona a las dos. En este caso se tiene la tabla Libros (ID (llave primaria), Titulo, AutorID (llave foránea)) y Autores( AutoreID (llave primaria), Nombre).

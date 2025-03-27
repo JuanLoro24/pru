@@ -18,3 +18,31 @@ CREATE TABLE Libros (
 
 SELECT * FROM Autores
 SELECT * FROM Libros
+
+
+--Creacion de los procedimientos almacenados
+DROP PROCEDURE IF EXISTS sp_EditarLibro;
+
+CREATE PROCEDURE sp_EditarLibro
+    @ID INT,
+    @Titulo VARCHAR(255),
+    @AutorID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Libros
+    SET Titulo = @Titulo,
+        AutorID = @AutorID
+    WHERE ID = @ID;
+END;
+
+DROP PROCEDURE IF EXISTS sp_EliminarLibro;
+
+CREATE OR ALTER PROCEDURE sp_EliminarLibro
+    @Id INT
+AS
+BEGIN
+    DELETE FROM Libros
+    WHERE ID = @Id;
+END;

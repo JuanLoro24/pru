@@ -1,16 +1,4 @@
-﻿
-
-document.addEventListener("DOMContentLoaded", function () {
-    cargarAutores(); // Cargar autores al inicio
-
-    document.getElementById("form-autor").addEventListener("submit", function (event) {
-        event.preventDefault(); // Evita recargar la página
-        agregarAutor();
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("form-autor").addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -20,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        fetch("/Autor/AddAutor", { // Ahora apunta a AutorController
+        fetch("/Autor/AddAutor", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nombre: nombre })
@@ -29,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(nuevoAutor => {
                 alert("Autor agregado correctamente!");
                 document.getElementById("nombreAutor").value = "";
+                window.location.reload(); // Opcional, para que recargue la lista si tienes tabla
             })
             .catch(error => console.error("Error al agregar autor:", error));
     });

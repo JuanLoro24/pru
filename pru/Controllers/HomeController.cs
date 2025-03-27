@@ -29,8 +29,8 @@ namespace pru.Controllers
             var Libros = await _context.Libros
                 .Select(a => new LibroM
                 {
+                    Id = a.Id,
                     Titulo = a.Titulo
-
                 })
                 .ToListAsync();
 
@@ -40,7 +40,7 @@ namespace pru.Controllers
         //Control sobre las vistas que se van a presentar en la interfaz grafica
         public IActionResult Index()
         {
-            return View(); 
+            return View();
         }
         public IActionResult Autores()
         {
@@ -49,7 +49,12 @@ namespace pru.Controllers
 
         public IActionResult Libros()
         {
-            return View(); 
+            return View();
+        }
+
+        public IActionResult LibrosEdit()
+        {
+            return View();
         }
     }
 }
